@@ -1,2 +1,1 @@
-# serp-helper
-SERP Helper extension
+# README
