@@ -127,12 +127,16 @@ try {
   const downloadedPath = await download.path();
   const [downloaded, expected] = await Promise.all([readFile(downloadedPath), readFile(localZip)]);
   assert.equal(sha256(downloaded), sha256(expected));
+  const attachment = store.locator('input[name="diagnostic"]');
+  await attachment.setInputFiles(localZip);
+  assert.equal(await attachment.evaluate((input) => input.files?.[0]?.name), "serp-helper-staging-chrome.zip");
 
   console.log(JSON.stringify({
     helperPopup: "passed",
     restrictedPageRejection: "passed",
     permissionDenial: "passed",
     stagingGuidance: "passed",
+    attachmentSelection: "passed",
     liveDownloadSha256: sha256(downloaded),
     productionTouched: false,
     formSubmitted: false,
