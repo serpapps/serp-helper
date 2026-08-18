@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SERP Helper</title>
+    <style>
+      :root { color-scheme: light dark; font: 14px/1.45 system-ui, sans-serif; }
+      body { box-sizing: border-box; margin: 0; padding: 16px; width: 380px; background: #101216; color: #f4f5f7; }
+      h1 { font-size: 18px; margin: 0 0 6px; }
+      p { color: #b8bec9; margin: 7px 0; }
+      .card { border: 1px solid #333844; border-radius: 10px; padding: 12px; margin: 12px 0; background: #181b21; }
+      .origin { color: #fff; font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
+      ul { color: #cbd0d9; padding-left: 20px; }
+      label { align-items: flex-start; display: flex; gap: 8px; margin: 12px 0; }
+      button, a.button { box-sizing: border-box; border: 1px solid #4c5567; border-radius: 8px; color: #fff; cursor: pointer; display: block; margin-top: 8px; padding: 10px 12px; text-align: center; text-decoration: none; width: 100%; background: #252b35; }
+      button.primary { background: #2770e8; border-color: #2770e8; }
+      button:disabled { cursor: not-allowed; opacity: .55; }
+      #status[data-tone="error"] { color: #ff9c9c; }
+      #status[data-tone="success"] { color: #85e3aa; }
+      .fine { font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>SERP Support Helper</h1>
+    <p>Create a private diagnostic ZIP for one affected website, then attach it to your structured support case.</p>
+    <div class="card">
+      <strong>Selected website</strong>
+      <p class="origin" id="targetOrigin">Checking active tab…</p>
+      <strong>Included</strong>
+      <ul>
+        <li>sanitized console errors</li>
+        <li>same-origin network status metadata</li>
+        <li>cookie counts, browser, and helper version</li>
+      </ul>
+      <p class="fine">Never included: cookie values, authorization headers, request bodies, installed extensions, full private URLs, or cross-site traffic.</p>
+    </div>
+    <label><input id="consent" type="checkbox" /> <span>I consent to collecting the categories above from the selected website for this support request.</span></label>
+    <button class="primary" id="exportButton" disabled>Create support.zip</button>
+    <a class="button" id="supportLink" href="#" target="_blank" rel="noreferrer">Open structured support form</a>
+    <p id="status" aria-live="polite"></p>
+    <script type="module" src="support.js"></script>
+  </body>
+</html>
