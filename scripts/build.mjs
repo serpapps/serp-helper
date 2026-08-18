@@ -31,7 +31,7 @@ const manifest = {
   background: { service_worker: "background.js", type: "module" },
 };
 await writeFile(path.join(outDir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
-await writeFile(path.join(outDir, "build-info.json"), `${JSON.stringify({ environment, version: manifest.version, supportFormUrl, builtAt: new Date().toISOString() }, null, 2)}\n`);
+await writeFile(path.join(outDir, "build-info.json"), `${JSON.stringify({ environment, version: manifest.version, supportFormUrl }, null, 2)}\n`);
 const names = ["background.js", "build-info.json", ...[16, 32, 48, 128].map((size) => `icon-${size}.png`), "lib/diagnostics.js", "manifest.json", "support.html", "support.js"];
 const files = await Promise.all(names.map(async (name) => ({ name, data: new Uint8Array(await readFile(path.join(outDir, name))) })));
 const archive = buildStoredZip(files);
