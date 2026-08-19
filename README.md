@@ -1,10 +1,22 @@
-# README
+# SERP Helper
 
-SERP Helper extension makes it easy for our team to help debug and fix issues you have by sending us the information we need to debug your issues (without asking you to manually go find a whole bunch of technical things and send them to us).
+SERP Helper creates a privacy-bounded diagnostic ZIP for a structured SERP support case. It does not upload by itself and contains no remote upload credential.
 
-## How to use
+## Customer flow
 
-1. Install the extension in your browser (same process as installing any of our other extensions)
-2. Visit the page where you experienced an issue/bug with one of our other extensions (be sure to refresh the page if you already have it open)
-3. Click the extension & enter the email you use with SERP
-4. Click "Send support bundle" and let support know it was sent!
+1. Open the website where the problem occurs and reproduce the issue.
+2. Open SERP Helper and review the selected origin and collection categories.
+3. Give explicit consent and click **Create support.zip**.
+4. Open the structured SERP support form, describe the problem, and attach `support.zip`.
+5. The Store creates the case and Agentic Inbox attaches the diagnostic to that exact case.
+
+The helper excludes cookie values, authorization material, request and response bodies, installed-extension inventory, full private URLs, and cross-origin network activity.
+
+## Development
+
+```sh
+npm test
+npm run build:staging
+```
+
+Production release and browser-store publication require separate approval.
